@@ -8,10 +8,10 @@ Install Dependencies
 
 ```js
 npm install
-`
+```
 
 Start Server
 
 ```js
 npm start
-`
+```
