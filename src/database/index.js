@@ -4,7 +4,7 @@ import { env, db } from '../config'
 
 const uri =
   env === 'dev'
-    ? `mongodb://${db.host}:${db.port}`
+    ? `mongodb://${db.host}:${db.port}/${db.name}`
     : `mongodb://${db.user}:${encodeURIComponent(db.password)}@${db.host}:${
         db.port
       }/${db.name}`

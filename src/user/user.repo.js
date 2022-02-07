@@ -1,8 +1,13 @@
-import UserModel from './users.model'
+import UserModel from './user.model'
 
 export default class UserRepo {
+  constructor(userModel) {
+    this.userModel = userModel
+  }
+
   async findById() {
-    return await UserModel.findOne({ _id: id, status: true })
+    return await this.userModel
+      .findOne({ _id: id, status: true })
       .select('+email')
       .populate({
         match: { status: true },
@@ -12,7 +17,8 @@ export default class UserRepo {
   }
 
   async findByEmail() {
-    UserModel.findOne({ email: email, status: true })
+    return await this.userModel
+      .findOne({ email: email, status: true })
       .select('+email')
       .populate({
         match: { status: true },
@@ -24,13 +30,14 @@ export default class UserRepo {
   async createUser(user) {
     const now = new Date()
     user.createdAt = user.updatedAt = now
-    const createdUser = await UserModel.create(user)
+    const createdUser = await this.userModel.create(user)
     return createdUser.toObject()
   }
 
   async updateUser(user) {
     user.updatedAt = new Date()
-    await UserModel.updateOne({ _id: user._id }, { $set: { ...user } })
+    await this.userModel
+      .updateOne({ _id: user._id }, { $set: { ...user } })
       .lean()
       .exec()
     return user

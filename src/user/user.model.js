@@ -39,4 +39,5 @@ const userSchema = new Schema({
   },
 })
 
-export default UserModel = model(DOCUMENT_NAME, userSchema, COLLECTION_NAME)
+const UserModel = model(DOCUMENT_NAME, userSchema, COLLECTION_NAME)
+export default UserModel
