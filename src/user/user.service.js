@@ -1,5 +1,4 @@
 import logger from '../core/logger'
-import UserRepo from './user.repo'
 
 export default class UserService {
   constructor(userRepo) {

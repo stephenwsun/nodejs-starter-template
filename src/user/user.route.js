@@ -9,11 +9,11 @@ const userRepo = new UserRepo(UserModel)
 const userService = new UserService(userRepo)
 const userController = new UserController(userService)
 
-console.log('userController: ', userController)
-
-router.get('/:id', (req, res) => userController.getUserById(req, res))
-router.get('/:email', (req, res) => userController.getUserByEmail(req, res))
+router.get('/id/:id', (req, res) => userController.getUserById(req, res))
+router.get('/email/:email', (req, res) =>
+  userController.getUserByEmail(req, res)
+)
 router.post('/', (req, res) => userController.createUser(req, res))
-router.put('/', (req, res) => userController.updateUser(req, res))
+router.put('/id/:id', (req, res) => userController.updateUser(req, res))
 
 export default router

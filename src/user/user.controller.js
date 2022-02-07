@@ -35,11 +35,20 @@ export default class UserController {
   }
 
   async updateUser(req, res) {
+    if (!req.params.id) {
+      logger.error('Missing query param id')
+      res.status(400).send('Missing query param id')
+    }
+
     if (!req.body) {
       logger.error('Missing user in body')
       res.status(500).send('Missing user in body')
     }
-    const user = await this.userService.updateUser(req.body)
+
+    const user = await this.userService.updateUser({
+      _id: req.params.id,
+      ...req.body,
+    })
     res.send(user)
   }
 }

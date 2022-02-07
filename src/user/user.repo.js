@@ -1,28 +1,20 @@
-import UserModel from './user.model'
-
 export default class UserRepo {
   constructor(userModel) {
     this.userModel = userModel
   }
 
-  async findById() {
+  async findById(id) {
     return await this.userModel
       .findOne({ _id: id, status: true })
       .select('+email')
-      .populate({
-        match: { status: true },
-      })
       .lean()
       .exec()
   }
 
-  async findByEmail() {
+  async findByEmail(email) {
     return await this.userModel
-      .findOne({ email: email, status: true })
+      .findOne({ email, status: true })
       .select('+email')
-      .populate({
-        match: { status: true },
-      })
       .lean()
       .exec()
   }
