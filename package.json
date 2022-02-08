@@ -4,8 +4,9 @@
   "description": "Node.js Starter Template",
   "main": "src/server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node -r esm src/server.js"
+    "test": "jest",
+    "start": "node -r esm src/server.js",
+    "dev": "nodemon -r esm src/server.js"
   },
   "author": "Stephen Sun",
   "license": "MIT",
@@ -19,6 +20,11 @@
     "mongoose": "^6.2.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.17.0",
+    "@babel/plugin-transform-modules-commonjs": "^7.16.8",
+    "babel-jest": "^27.5.0",
+    "jest": "^27.5.0",
+    "nodemon": "^2.0.15",
     "prettier": "^2.5.1"
   }
 }
