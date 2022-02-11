@@ -1,4 +1,6 @@
-export default class UserRepo {
+import UserModel from './user.model'
+
+class UserRepo {
   constructor(userModel) {
     this.userModel = userModel
   }
@@ -35,3 +37,6 @@ export default class UserRepo {
     return user
   }
 }
+
+const userRepo = new UserRepo(UserModel)
+export default userRepo

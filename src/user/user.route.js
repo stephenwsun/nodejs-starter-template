@@ -1,13 +1,8 @@
 import express from 'express'
-import UserController from './user.controller'
-import UserService from './user.service'
-import UserRepo from './user.repo'
-import UserModel from './user.model'
+
+import userController from './user.controller'
 
 const router = express.Router()
-const userRepo = new UserRepo(UserModel)
-const userService = new UserService(userRepo)
-const userController = new UserController(userService)
 
 router.get('/id/:id', (req, res) => userController.getUserById(req, res))
 router.get('/email/:email', (req, res) =>

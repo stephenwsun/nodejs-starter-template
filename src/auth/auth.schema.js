@@ -1,0 +1,16 @@
+import Joi from 'joi'
+
+import { JoiAuthBearer } from '../helpers/helpers.validator'
+
+export default {
+  apiKey: Joi.object()
+    .keys({
+      'x-api-key': Joi.string().required(),
+    })
+    .unknown(true),
+  auth: Joi.object()
+    .keys({
+      authorization: JoiAuthBearer().required(),
+    })
+    .unknown(true),
+}

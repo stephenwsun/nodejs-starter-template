@@ -10,3 +10,10 @@ export const db = {
   user: process.env.DB_USER || '',
   password: process.env.DB_USER_PWD || '',
 }
+
+export const tokenInfo = {
+  accessTokenValidityDays: parseInt(process.env.ACCESS_TOKEN_VALIDITY_SEC || '0'),
+  refreshTokenValidityDays: parseInt(process.env.REFRESH_TOKEN_VALIDITY_SEC || '0'),
+  issuer: process.env.TOKEN_ISSUER || '',
+  audience: process.env.TOKEN_AUDIENCE || '',
+};
