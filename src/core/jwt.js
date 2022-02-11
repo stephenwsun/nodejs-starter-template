@@ -2,7 +2,7 @@ import jwt from 'jsonwebtoken'
 import logger from '../core/logger'
 import { promisify } from 'util'
 import { jwtSecret } from '../config'
-import { BadTokenError, TokenExpiredError } from './error'
+import { BadTokenError, TokenExpiredError } from './core.errors'
 
 export default class JWT {
   constructor() {}

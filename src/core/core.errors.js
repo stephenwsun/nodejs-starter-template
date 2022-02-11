@@ -1,5 +1,4 @@
-import { Response } from 'express'
-import { environment } from '../config'
+import { env } from '../config'
 import {
   AuthFailureResponse,
   AccessTokenErrorResponse,
@@ -7,7 +6,7 @@ import {
   NotFoundResponse,
   BadRequestResponse,
   ForbiddenResponse,
-} from './ApiResponse'
+} from './core.responses'
 
 const ErrorType = {
   BAD_TOKEN: 'BadTokenError',
@@ -48,7 +47,7 @@ export default class ApiError extends Error {
       default: {
         let message = err.message
         // Do not send failure message in production as it may send sensitive data
-        if (environment === 'production') message = 'Something wrong happened.'
+        if (env === 'production') message = 'Something wrong happened.'
         return new InternalErrorResponse(message).send(res)
       }
     }
