@@ -1,6 +1,7 @@
 import logger from '../core/logger'
+import userService from './user.service'
 
-export default class UserController {
+class UserController {
   constructor(userService) {
     this.userService = userService
   }
@@ -52,3 +53,6 @@ export default class UserController {
     res.send(user)
   }
 }
+
+const userController = new UserController(userService)
+export default userController

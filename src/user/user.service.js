@@ -1,6 +1,7 @@
 import logger from '../core/logger'
+import userRepo from './user.repo'
 
-export default class UserService {
+class UserService {
   constructor(userRepo) {
     this.userRepo = userRepo
   }
@@ -29,3 +30,6 @@ export default class UserService {
     return updatedUser
   }
 }
+
+const userService = new UserService(userRepo)
+export default userService
