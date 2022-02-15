@@ -52,7 +52,7 @@ export class NotFoundResponse extends ApiResponse {
   }
 
   send(res) {
-    this.#url = res.req?.originalUrl
+    this.#url = res.req ? res.req.originalUrl : ''
     return super.prepare(res, this)
   }
 }
