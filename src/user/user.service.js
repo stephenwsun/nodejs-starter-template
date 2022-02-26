@@ -1,4 +1,4 @@
-import logger from '../core/logger'
+import logger from '../core/core.logger'
 import userRepo from './user.repo'
 
 class UserService {

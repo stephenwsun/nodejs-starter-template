@@ -1,4 +1,4 @@
-import logger from '../core/logger'
+import logger from '../core/core.logger'
 import userService from './user.service'
 
 class UserController {
