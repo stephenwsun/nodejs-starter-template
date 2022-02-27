@@ -1,7 +1,6 @@
-import { setupDB } from './../test-setup'
-import UserService from './user.service'
-import UserRepo from './user.repo'
-import UserModel from './user.model'
+import { setupDB } from '../test-setup'
+import userService from './user.service'
+import userRepo from './user.repo'
 
 const DB_NAME = 'test'
 
@@ -11,9 +10,6 @@ const mockUser = {
   email: 'test@gmail.com',
   status: true,
 }
-
-const userRepo = new UserRepo(UserModel)
-const userService = new UserService(userRepo)
 
 setupDB(DB_NAME)
 

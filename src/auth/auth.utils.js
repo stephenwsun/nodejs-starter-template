@@ -1,6 +1,6 @@
 import { Types } from 'mongoose'
 
-import JWT, { JwtPayload } from '../core/jwt'
+import JWT, { JwtPayload } from '../core/core.jwt'
 import { AuthFailureError, InternalError } from '../core/core.errors'
 import { tokenInfo } from '../config'
 
@@ -52,7 +52,7 @@ export const createTokens = async (user, accessTokenKey, refreshTokenKey) => {
   if (!refreshToken) throw new InternalError()
 
   return {
-    accessToken: accessToken,
-    refreshToken: refreshToken,
+    accessToken,
+    refreshToken,
   }
 }

@@ -6,7 +6,7 @@ import {
   AccessTokenError,
   TokenExpiredError,
 } from '../core/core.errors'
-import JWT from '../core/JWT'
+import jwt from '../core/core.jwt'
 import userRepo from '../user/user.repo'
 import schema from './auth.schema'
 import { getAccessToken, validateTokenData } from './auth.utils'
@@ -21,7 +21,7 @@ export default router.use(
     req.accessToken = getAccessToken(req.headers.authorization)
 
     try {
-      const payload = await JWT.validate(req.accessToken)
+      const payload = await jwt.validate(req.accessToken)
       validateTokenData(payload)
 
       const user = await userRepo.findById(new Types.ObjectId(payload.sub))

@@ -1,14 +1,14 @@
-import jwt from 'jsonwebtoken'
-import logger from '../core/logger'
+import jsonwebtoken from 'jsonwebtoken'
+import logger from '../core/core.logger'
 import { promisify } from 'util'
 import { jwtSecret } from '../config'
 import { BadTokenError, TokenExpiredError } from './core.errors'
 
-export default class JWT {
+class JWT {
   constructor() {}
 
   encode(jwtPayload) {
-    return jwt.sign(jwtPayload, jwtSecret)
+    return jsonwebtoken.sign(jwtPayload, jwtSecret)
   }
 
   /**
@@ -16,7 +16,7 @@ export default class JWT {
    */
   async decode(token) {
     try {
-      const verify = promisify(jwt.verify)
+      const verify = promisify(jsonwebtoken.verify)
       return await verify(token, jwtSecret, { ignoreExpiration: true })
     } catch (err) {
       logger.debug(err)
@@ -29,16 +29,19 @@ export default class JWT {
    */
   async validate(token) {
     try {
-      const verify = promisify(jwt.verify)
+      const verify = promisify(jsonwebtoken.verify)
       return await verify(token, jwtSecret)
     } catch (err) {
       logger.debug(err)
-      if (e && e.name === 'TokenExpiredError') throw new TokenExpiredError()
+      if (err && err.name === 'TokenExpiredError') throw new TokenExpiredError()
       // throws error if the token has not been encrypted by the private key
       throw new BadTokenError()
     }
   }
 }
+
+const jwt = new JWT()
+export default jwt
 
 export class JwtPayload {
   constructor(issuer, audience, subject, param, validity) {
