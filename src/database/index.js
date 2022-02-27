@@ -1,5 +1,5 @@
 import mongoose from 'mongoose'
-import logger from '../core/logger'
+import logger from '../core/core.logger'
 import { env, db } from '../config'
 
 const uri =

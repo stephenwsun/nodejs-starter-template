@@ -1,5 +1,5 @@
 import Joi from 'joi'
-import logger from '../core/logger'
+import logger from '../core/core.logger'
 import { BadRequestError } from '../core/core.errors'
 import { Types } from 'mongoose'
 
