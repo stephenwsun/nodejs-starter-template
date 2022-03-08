@@ -19,7 +19,8 @@
     "joi": "^17.6.0",
     "jsonwebtoken": "^8.5.1",
     "log4js": "^6.4.1",
-    "mongoose": "^6.2.0"
+    "mongoose": "^6.2.0",
+    "supertest": "^6.2.2"
   },
   "devDependencies": {
     "@babel/core": "^7.17.0",

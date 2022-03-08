@@ -1,4 +1,4 @@
-import jwt, { JwtPayload } from './core.jwt'
+import jwt  from './core.jwt'
 import { BadTokenError, TokenExpiredError } from './core.errors'
 
 const ISSUER = 'issuer'
